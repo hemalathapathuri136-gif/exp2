@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart'; 
+void main() => runApp(const BasicNavigationApp()); 
+class BasicNavigationApp extends StatelessWidget { 
+const BasicNavigationApp({Key? key}) : super(key: key); 
+@override 
+Widget build(BuildContext context) { 
+return const MaterialApp(home: PrimaryGateView()); 
+} 
+} 
+class PrimaryGateView extends StatelessWidget { 
+const PrimaryGateView({Key? key}) : super(key: key); 
+@override 
+Widget build(BuildContext context) { 
+return Scaffold( 
+appBar: AppBar(title: const Text('Primary Control Gate')), 
+body: Center( 
+child: ElevatedButton( 
+child: const Text('Access Secondary Workspace Matrix'), 
+onPressed: () { 
+// Pushing detailed route target onto the context execution stack 
+Navigator.push( 
+context, 
+MaterialPageRoute(builder: (context) => const DetailedAnalyticView()), 
+); 
+}, 
+), 
+), 
+); 
+} 
+} 
+class DetailedAnalyticView extends StatelessWidget { 
+const DetailedAnalyticView({Key? key}) : super(key: key); 
+@override 
+Widget build(BuildContext context) { 
+return Scaffold( 
+appBar: AppBar(title: const Text('Detailed Analytics View')), 
+body: Center( 
+child: ElevatedButton( 
+style: ElevatedButton.styleFrom(backgroundColor: Colors.red), 
+child: const Text('Tear down View Context (Go Back)'), 
+onPressed: () => Navigator.pop(context), // Pops route context stack layer 
+), 
+), 
+); 
+} 
+}
