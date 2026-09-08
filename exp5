@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart'; 
+void main() => runApp(const LocalStateApp()); 
+class LocalStateApp extends StatelessWidget { 
+const LocalStateApp({Key? key}) : super(key: key); 
+@override 
+Widget build(BuildContext context) { 
+return const MaterialApp(home: LocalCounterDashboard()); 
+} 
+} 
+class LocalCounterDashboard extends StatefulWidget { 
+const LocalCounterDashboard({Key? key}) : super(key: key); 
+@override 
+State<LocalCounterDashboard> createState() => _LocalCounterDashboardState(); 
+} 
+class _LocalCounterDashboardState extends State<LocalCounterDashboard> { 
+int _localEventCounter = 0; // Local mutable state tracking parameter variable 
+void _incrementCounter() { 
+setState(() { 
+_localEventCounter++;  // Increments variable value and schedules element tree rebuild 
+}); 
+} 
+@override 
+Widget build(BuildContext context) { 
+return Scaffold( 
+appBar: AppBar(title: const Text('Stateful Local Lifecycle Console')), 
+body: Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: 
+[const Text('Isolated Local Context Registry Metric:', style: TextStyle(color: Colors.grey)), 
+Text('$_localEventCounter', style: const TextStyle(fontSize: 48, fontWeight: 
+FontWeight.bold)), 
+], 
+), 
+), 
+floatingActionButton: FloatingActionButton( 
+onPressed: _incrementCounter, 
+child: const Icon(Icons.add), 
+), 
+); 
+} 
+} 
