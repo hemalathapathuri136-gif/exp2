@@ -1,0 +1,14 @@
+s = input()
+
+stack = []
+
+for ch in s:
+    if ch in "([{":
+        stack.append(ch)
+    elif stack and "([{".index(stack.pop()) == ")]}".index(ch):
+        continue
+    else:
+        print("false")
+        break
+else:
+    print("true" if not stack else "false")
