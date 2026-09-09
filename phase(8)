@@ -1,0 +1,10 @@
+s = input()
+
+# Keep only letters and numbers, and convert to lowercase
+s = ''.join(ch.lower() for ch in s if ch.isalnum())
+
+# Check palindrome
+if s == s[::-1]:
+    print("true")
+else:
+    print("false")
